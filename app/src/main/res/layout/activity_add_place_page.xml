@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/card_side"
+
+        />
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        android:background="@color/card_side"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="18dp"
+        app:tint="@color/text"
+
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Place"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/text"
+            android:layout_toRightOf="@+id/close"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:id="@+id/text_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_save"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/click_text"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginRight="18dp"
+            android:textSize="14sp"
+            android:clickable="true"
+            />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/card_frame_top"
+        android:layout_below="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        >
+        <ImageView
+            android:id="@+id/card_item_top"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/card_item_top"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/text"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            />
+
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_frame_top"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        >
+        <ImageView
+
+            android:id="@+id/card_center"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:src="@drawable/card_item_bottom"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profil_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/gudang"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+
+            />
+
+        <EditText
+            android:id="@+id/edt_place_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/profil_image"
+            android:layout_toRightOf="@id/profil_image"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="16dp"
+            android:hint="Place Name"
+            android:textSize="14sp"
+            android:textColor="@color/text"
+            android:lines="1"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/navbar"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_category_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warehouse_brown"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>

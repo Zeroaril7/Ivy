@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/frame_background"
+    tools:context=".ItemPage"
+    >
+
+    <TextView
+        android:id="@+id/title_Item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Items"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/top_margin"
+        android:fontFamily="@font/poppins_black"
+        android:textSize="24sp"
+        android:textColor="@color/text"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/parent_rv"
+        android:layout_below="@+id/title_Item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:listitem="@layout/parent_rv_item"
+        />
+
+    <RelativeLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/navbar"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_category_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warehouse_brown"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>

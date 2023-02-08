@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rv_child_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_item"
+    android:clickable="true"
+    >
+
+    <LinearLayout
+        android:id="@+id/frame_card_item_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profil_image_item_child"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/box"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_toEndOf="@+id/profil_image"
+            android:layout_toRightOf="@id/profil_image"
+            android:text=""
+            android:textSize="12sp"
+            android:textColor="@color/text" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/line_item"
+        android:layout_below="@+id/frame_card_item_child"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="-1dp"
+        android:src="@drawable/garis"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>

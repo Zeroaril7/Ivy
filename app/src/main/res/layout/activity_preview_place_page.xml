@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PreviewPlacePage"
+    android:background="@color/frame_background"
+    >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin"
+        android:fontFamily="@font/poppins_black"
+        android:gravity="center_horizontal"
+        android:text="Places"
+        android:textColor="@color/text"
+        android:textSize="24sp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/place_image"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:layout_width="132dp"
+        android:layout_height="132dp"
+        android:src="@drawable/gudang"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        />
+    
+    <FrameLayout
+        android:id="@+id/card_frame_top"
+        android:layout_below="@+id/place_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        >
+        <ImageView
+            android:id="@+id/card_item_top"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/card_item_top"
+
+            />
+
+        <TextView
+            android:id="@+id/place_name_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Place"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/text"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_frame_top"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        >
+        <ImageView
+
+            android:id="@+id/card_center"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:src="@drawable/card_item_bottom"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profil_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/gudang"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+
+            />
+
+        <EditText
+            android:id="@+id/edt_place_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/profil_image"
+            android:layout_toRightOf="@id/profil_image"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="16dp"
+            android:textSize="14sp"
+            android:text=""
+            android:textColor="@color/text"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="132dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="52dp"
+        android:layout_alignParentLeft="true"
+        android:text="Save"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/green_btn"
+        android:backgroundTint="@color/frame_background"
+        app:strokeColor="@color/green_btn"
+        app:strokeWidth="1sp"
+        android:shadowColor="@color/green_btn"
+        />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="132dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="52dp"
+        android:layout_alignParentRight="true"
+        android:text="Delete"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/click_text"
+        android:backgroundTint="@color/frame_background"
+        app:strokeColor="@color/click_text"
+        app:strokeWidth="1sp"
+        android:shadowColor="@color/click_text"
+        />
+
+    <RelativeLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/navbar"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_category_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warehouse_brown"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>
