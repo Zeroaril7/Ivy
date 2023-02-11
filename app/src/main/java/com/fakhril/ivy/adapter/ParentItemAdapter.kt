@@ -12,13 +12,9 @@ import com.fakhril.ivy.database.Item
 
 import com.fakhril.ivy.database.Place
 
-class ParentItemAdapter(val context: Context): RecyclerView.Adapter<ParentItemAdapter.ParentItemViewHolder>() {
+class ParentItemAdapter(private val allPlace: ArrayList<Place>): RecyclerView.Adapter<ParentItemAdapter.ParentItemViewHolder>() {
 
-    private val allPlace = ArrayList<Place>()
-    private val Item = ArrayList<Item>()
     private val allItem = ArrayList<Item>()
-
-
 
 
     inner class ParentItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -33,35 +29,39 @@ class ParentItemAdapter(val context: Context): RecyclerView.Adapter<ParentItemAd
     }
 
     override fun onBindViewHolder(holder: ParentItemViewHolder, position: Int) {
-        var place = allPlace[position]
+        val place = allPlace[position]
 
-        holder.placeName.setText(allPlace.get(position).placeName)
+        holder.placeName.text = place.placeName
         holder.ivyRV.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(holder.itemView.context)
 
-//          Di adapter bawah ini pada bagian Item, perlu position dari place. Akan tetapi pada bagian Item belum ada position dari place
-            holder.ivyRV.adapter = ChildItemAdapter(context, Item)
+            var itemList = ArrayList<Item>()
+            itemList.clear()
+            for (item in allItem) {
+                if(item.idPlace == place.idPlace){
+                    itemList.add(item)
+                }
+            }
+
+            val adapter = ChildItemAdapter(itemList)
+            holder.ivyRV.adapter = adapter
         }
+
+
     }
 
     override fun getItemCount(): Int {
        return allPlace.size
     }
 
-    fun updateListPlace(newList: List<Place>) {
+    fun updateListPlace(newList: List<Place>, newListItem: List<Item>) {
 
         allPlace.clear()
-
         allPlace.addAll(newList)
 
-        notifyDataSetChanged()
-    }
-
-    fun updateListItem(newList: List<Item>){
         allItem.clear()
-
-        allItem.addAll(newList)
+        allItem.addAll(newListItem)
 
         notifyDataSetChanged()
     }

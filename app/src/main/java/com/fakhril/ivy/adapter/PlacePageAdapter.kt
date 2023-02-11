@@ -12,9 +12,10 @@ import com.fakhril.ivy.R
 import com.fakhril.ivy.database.Place
 
 class PlacePageAdapter(
-    val context: Context,
-    val ivyClickInterfacePlace: IvyClickInterfacePlace
+    val context: Context
 ) : RecyclerView.Adapter<PlacePageAdapter.PlacePageViewHolder>() {
+
+    var ivyClickInterfacePlace : IvyClickInterfacePlace? = null
 
     private val allPlace = ArrayList<Place>()
 
@@ -41,7 +42,7 @@ class PlacePageAdapter(
         }
 
         holder.itemView.setOnClickListener{
-            ivyClickInterfacePlace.onIvyClickPlace(allPlace.get(position))
+            ivyClickInterfacePlace?.onIvyClickPlace(allPlace.get(position))
         }
     }
 
@@ -57,9 +58,10 @@ class PlacePageAdapter(
 
         notifyDataSetChanged()
     }
+    interface IvyClickInterfacePlace {
+        fun onIvyClickPlace(place: Place)
+    }
 }
 
 
-interface IvyClickInterfacePlace {
-    fun onIvyClickPlace(place: Place)
-}
+

@@ -4,6 +4,6 @@ import androidx.room.*
 
 @Entity
 data class Place(
-    @PrimaryKey(autoGenerate = true)var id: Int = 0,
+    @PrimaryKey(autoGenerate = true)var idPlace: Int = 0,
     var placeName : String,
 )

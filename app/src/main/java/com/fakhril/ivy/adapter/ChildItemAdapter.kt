@@ -14,10 +14,10 @@ import com.fakhril.ivy.database.Item
 import com.fakhril.ivy.database.Place
 
 class ChildItemAdapter(
-    val context: Context, private val allItem: List<Item>
+    private val allItem: ArrayList<Item>
 ): RecyclerView.Adapter<ChildItemAdapter.ChildItemViewHoder>() {
 
-    var onItemClick : ((Item)-> Unit)? = null
+    var itemClickListener: ChildItemAdapter.ItemClickListener? = null
 
     inner class ChildItemViewHoder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val cardItem = itemView.findViewById<RelativeLayout>(R.id.rv_child_item)
@@ -32,7 +32,7 @@ class ChildItemAdapter(
 
     override fun onBindViewHolder(holder: ChildItemViewHoder, position: Int) {
         var itemList = allItem[position]
-        holder.itemName.setText(allItem.get(position).itemName)
+        holder.itemName.text = itemList.itemName
 
         if (position == allItem.size - 1){
             holder.cardItem.setBackgroundResource(R.drawable.card_item_bottom)
@@ -40,11 +40,23 @@ class ChildItemAdapter(
         }
 
         holder.itemView.setOnClickListener{
-            onItemClick?.invoke(itemList)
+            itemClickListener?.onItemClick(allItem.get(position))
         }
     }
 
     override fun getItemCount(): Int {
         return allItem.size
+    }
+
+    fun updateListItem(newList: List<Item>){
+        allItem.clear()
+
+        allItem.addAll(newList)
+
+        notifyDataSetChanged()
+    }
+
+    interface ItemClickListener {
+        fun onItemClick(item: Item)
     }
 }

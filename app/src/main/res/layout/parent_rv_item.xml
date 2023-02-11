@@ -8,9 +8,9 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="@dimen/horizontal_margin"
     android:layout_marginLeft="@dimen/horizontal_margin"
-    android:background="@drawable/card_item_top"
+    android:background="@drawable/card_item_top_nested"
     android:clickable="true"
-
+    android:layout_marginTop="20dp"
     >
 
     <LinearLayout
@@ -44,21 +44,13 @@
             android:textColor="@color/text" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/line_place"
-        android:layout_below="@+id/frame_card_item"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="-1dp"
-        android:src="@drawable/garis"
-        android:layout_centerHorizontal="true"
-        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/child_rv"
         android:layout_below="@+id/frame_card_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:listitem="@layout/child_rv_item"
+        android:clickable="true"
         />
 
 </RelativeLayout>

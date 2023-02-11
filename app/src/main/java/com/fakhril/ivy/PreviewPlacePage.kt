@@ -58,7 +58,7 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
                         this.finish()
                     } else {
                         val updatedPlace = Place(placeName = newPlaceName)
-                        updatedPlace.id = placeID
+                        updatedPlace.idPlace = placeID
                         viewModel.updatePlace(updatedPlace)
                         Toast.makeText(this, "Success Update", Toast.LENGTH_LONG).show()
 
@@ -69,7 +69,7 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
             }
             R.id.btn_delete -> {
                 val deletePlace = Place(placeName = oldPlaceName)
-                deletePlace.id = placeID
+                deletePlace.idPlace = placeID
                 viewModel.deletePlace(deletePlace)
 
                 Toast.makeText(this, "Success Delete", Toast.LENGTH_LONG).show()

@@ -8,13 +8,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fakhril.ivy.adapter.PlacePageAdapter
-import com.fakhril.ivy.adapter.IvyClickInterfacePlace
 import com.fakhril.ivy.database.Place
 import com.fakhril.ivy.viewmodel.PlacePageViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class PlacePage : AppCompatActivity(), IvyClickInterfacePlace {
+class PlacePage : AppCompatActivity() {
     lateinit var ivyRV: RecyclerView
     lateinit var viewModel: PlacePageViewModel
     lateinit var addFABPlace: FloatingActionButton
@@ -31,10 +30,10 @@ class PlacePage : AppCompatActivity(), IvyClickInterfacePlace {
         ivyRV.setHasFixedSize(true)
         ivyRV.layoutManager = LinearLayoutManager(this)
 
-        val PlacePageAdapter = PlacePageAdapter(this, this)
+        val placePageAdapter = PlacePageAdapter(this)
 
 
-        ivyRV.adapter = PlacePageAdapter
+        ivyRV.adapter = placePageAdapter
 
         viewModel = ViewModelProvider(
             this,
@@ -43,7 +42,7 @@ class PlacePage : AppCompatActivity(), IvyClickInterfacePlace {
 
         viewModel.getPlace.observe(this, Observer { list ->
             list?.let{
-                PlacePageAdapter.updateList(it)
+                placePageAdapter.updateList(it)
             }
         })
 
@@ -52,13 +51,16 @@ class PlacePage : AppCompatActivity(), IvyClickInterfacePlace {
             startActivity(intent)
             this.finish()
         }
-    }
 
-    override fun onIvyClickPlace(place: Place) {
-        val intent = Intent(this@PlacePage, PreviewPlacePage::class.java)
-        intent.putExtra("placeId", place.id)
-        intent.putExtra("placeName", place.placeName)
-        startActivity(intent)
-        this.finish()
+        placePageAdapter.ivyClickInterfacePlace = object : PlacePageAdapter.IvyClickInterfacePlace{
+            override fun onIvyClickPlace(place: Place) {
+                val intent = Intent(this@PlacePage, PreviewPlacePage::class.java)
+                intent.putExtra("placeId", place.idPlace)
+                intent.putExtra("placeName", place.placeName)
+                startActivity(intent)
+                finish()
+            }
+
+        }
     }
 }
