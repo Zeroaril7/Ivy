@@ -10,14 +10,14 @@
     android:clickable="true"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/frame_card_item_child"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/profil_image_item_child"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -34,12 +34,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_toEndOf="@+id/profil_image"
-            android:layout_toRightOf="@id/profil_image"
+            android:layout_toRightOf="@+id/profil_image_item_child"
+            android:layout_centerVertical="true"
             android:text=""
             android:textSize="12sp"
             android:textColor="@color/text" />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_count"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@color/card_side"
+            android:text=""
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:paddingTop="2dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_semibold"
+            />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/line_item"

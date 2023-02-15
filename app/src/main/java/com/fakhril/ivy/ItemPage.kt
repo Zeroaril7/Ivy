@@ -1,6 +1,7 @@
 package com.fakhril.ivy
 
 import android.content.Intent
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -22,7 +23,7 @@ class ItemPage : AppCompatActivity(){
     private lateinit var ivyRV: RecyclerView
     private lateinit var viewModel: ItemPageViewModel
     lateinit var addFABItem: FloatingActionButton
-    private val childItemAdapter = ChildItemAdapter(allItem)
+    private val childItemAdapter = ChildItemAdapter(this, allItem)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,17 +62,6 @@ class ItemPage : AppCompatActivity(){
         addFABItem.setOnClickListener {
             val intent = Intent(this@ItemPage, AddItemPage::class.java)
             startActivity(intent)
-            this.finish()
         }
-
-        childItemAdapter.itemClickListener = object : ChildItemAdapter.ItemClickListener{
-            override fun onItemClick(item: Item) {
-                val intent = Intent(this@ItemPage, PreviewPlacePage::class.java)
-                startActivity(intent)
-                finish()
-            }
-
-        }
-
     }
 }

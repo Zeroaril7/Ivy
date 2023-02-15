@@ -6,8 +6,8 @@ import androidx.room.Relation
 data class IvyData(
     @Embedded val place: Place,
     @Relation(
-        parentColumn = "idPlace",
-        entityColumn = "idPlace",
+        parentColumn = "placeName",
+        entityColumn = "placeName",
         entity = Item::class
     )
     val item: List<Item>

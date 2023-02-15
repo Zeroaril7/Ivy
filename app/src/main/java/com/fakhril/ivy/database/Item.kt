@@ -8,5 +8,5 @@ data class Item(
     @PrimaryKey(autoGenerate = true)var id: Int = 0,
 val itemName : String,
 val total : Int,
-val idPlace: Int
+val placeName: String
 )

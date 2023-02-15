@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [Place::class, Item::class],
-    version = 9,
+    version = 10,
     exportSchema = false
 )
 abstract class IvyDatabase : RoomDatabase() {

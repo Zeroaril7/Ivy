@@ -32,6 +32,7 @@ class ParentItemAdapter(private val allPlace: ArrayList<Place>): RecyclerView.Ad
         val place = allPlace[position]
 
         holder.placeName.text = place.placeName
+
         holder.ivyRV.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(holder.itemView.context)
@@ -39,12 +40,12 @@ class ParentItemAdapter(private val allPlace: ArrayList<Place>): RecyclerView.Ad
             var itemList = ArrayList<Item>()
             itemList.clear()
             for (item in allItem) {
-                if(item.idPlace == place.idPlace){
+                if(item.placeName == place.placeName){
                     itemList.add(item)
                 }
             }
 
-            val adapter = ChildItemAdapter(itemList)
+            val adapter = ChildItemAdapter(context, itemList)
             holder.ivyRV.adapter = adapter
         }
 

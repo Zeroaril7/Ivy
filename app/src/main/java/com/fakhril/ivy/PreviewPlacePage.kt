@@ -41,6 +41,7 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         ).get(PlacePageViewModel::class.java)
 
+
         btnSave.setOnClickListener(this)
         btnDelete.setOnClickListener(this)
     }
