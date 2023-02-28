@@ -6,6 +6,8 @@ class IvyRepository(private val ivyDao: IvyDao) {
 
     val allPlaceData : LiveData<List<Place>> = ivyDao.getPlace()
     val allItemData : LiveData<List<Item>> = ivyDao.getItem()
+    val limitPlace : LiveData<List<Place>> = ivyDao.getPlaceLimit()
+    val limitItem : LiveData<List<Item>> = ivyDao.getItemLimit()
 
     suspend fun insertPlace(place: Place){
         ivyDao.insertPlace(place)

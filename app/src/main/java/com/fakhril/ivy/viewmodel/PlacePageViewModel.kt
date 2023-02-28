@@ -13,12 +13,14 @@ import kotlinx.coroutines.launch
 class PlacePageViewModel(application: Application): AndroidViewModel(application) {
 
     val getPlace: LiveData<List<Place>>
+    val getPlaceLimit : LiveData<List<Place>>
     val repository: IvyRepository
 
     init {
         val dao = IvyDatabase.getDatabase(application).getIvyDao()
         repository = IvyRepository(dao)
         getPlace = repository.allPlaceData
+        getPlaceLimit = repository.limitPlace
     }
 
     fun insertPlace(place: Place) = viewModelScope.launch (Dispatchers.IO){

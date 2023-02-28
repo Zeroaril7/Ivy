@@ -24,7 +24,7 @@
             android:id="@+id/profil_image_palce_item"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/gudang"
+            android:src="@drawable/place"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/horizontal_margin"
             android:layout_marginTop="12dp"

@@ -12,12 +12,13 @@ import com.fakhril.ivy.R
 import com.fakhril.ivy.database.Place
 
 class PlacePageAdapter(
-    val context: Context
+    val context: Context,
+    val allPlace : ArrayList<Place>
 ) : RecyclerView.Adapter<PlacePageAdapter.PlacePageViewHolder>() {
 
     var ivyClickInterfacePlace : IvyClickInterfacePlace? = null
 
-    private val allPlace = ArrayList<Place>()
+
 
     inner class PlacePageViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         val card = itemView.findViewById<RelativeLayout>(R.id.rv_place_card)

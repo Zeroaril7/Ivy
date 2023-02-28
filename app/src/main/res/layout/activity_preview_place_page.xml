@@ -24,7 +24,7 @@
         android:layout_marginTop="@dimen/vertical_margin"
         android:layout_width="132dp"
         android:layout_height="132dp"
-        android:src="@drawable/gudang"
+        android:src="@drawable/place"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/title"
         />
@@ -80,7 +80,7 @@
             android:id="@+id/profil_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/gudang"
+            android:src="@drawable/place"
             android:layout_marginLeft="20dp"
             android:layout_centerVertical="true"
 

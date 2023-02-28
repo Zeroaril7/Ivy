@@ -17,11 +17,11 @@
         android:orientation="horizontal"
         >
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profil_image_item_child"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/box"
+            android:src="@drawable/item"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/horizontal_margin"
             android:layout_marginTop="12dp"

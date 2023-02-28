@@ -3,6 +3,7 @@ package com.fakhril.ivy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,12 +18,17 @@ class PlacePage : AppCompatActivity() {
     lateinit var ivyRV: RecyclerView
     lateinit var viewModel: PlacePageViewModel
     lateinit var addFABPlace: FloatingActionButton
+    lateinit var btnToItem: ImageButton
+    lateinit var btnToHome: ImageButton
+    private var allPlace = ArrayList<Place>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_page)
+        supportActionBar?.hide()
 
-
+        btnToItem = findViewById(R.id.btn_item)
+        btnToHome = findViewById(R.id.btn_home)
         ivyRV = findViewById(R.id.card)
         addFABPlace = findViewById(R.id.FAB_place)
 
@@ -30,7 +36,7 @@ class PlacePage : AppCompatActivity() {
         ivyRV.setHasFixedSize(true)
         ivyRV.layoutManager = LinearLayoutManager(this)
 
-        val placePageAdapter = PlacePageAdapter(this)
+        val placePageAdapter = PlacePageAdapter(this, allPlace = allPlace)
 
 
         ivyRV.adapter = placePageAdapter
@@ -61,6 +67,17 @@ class PlacePage : AppCompatActivity() {
                 finish()
             }
 
+        }
+
+        btnToItem.setOnClickListener {
+            val intent = Intent(this, ItemPage::class.java)
+            startActivity(intent)
+            this.finish()
+        }
+        btnToHome.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            this.finish()
         }
     }
 }

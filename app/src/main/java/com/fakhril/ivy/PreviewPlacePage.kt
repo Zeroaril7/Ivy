@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.fakhril.ivy.database.Place
 import com.fakhril.ivy.viewmodel.PlacePageViewModel
@@ -19,15 +16,20 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewModel: PlacePageViewModel
     private lateinit var btnSave: Button
     private lateinit var btnDelete: Button
+    lateinit var btnToItem: ImageButton
+    lateinit var btnToHome: ImageButton
 
     var placeID = -1;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview_place_page)
+        supportActionBar?.hide()
 
         val oldPlaceName = intent.getStringExtra("placeName")
         placeID = intent.getIntExtra("placeId", -1)
 
+        btnToItem = findViewById(R.id.btn_item)
+        btnToHome = findViewById(R.id.btn_home)
         place_name_title = findViewById(R.id.place_name_title)
         place_name = findViewById(R.id.edt_place_name)
         btnSave = findViewById(R.id.btn_save)
@@ -44,6 +46,16 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
 
         btnSave.setOnClickListener(this)
         btnDelete.setOnClickListener(this)
+        btnToItem.setOnClickListener {
+            val intent = Intent(this, ItemPage::class.java)
+            startActivity(intent)
+            this.finish()
+        }
+        btnToHome.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     override fun onClick(v: View?) {

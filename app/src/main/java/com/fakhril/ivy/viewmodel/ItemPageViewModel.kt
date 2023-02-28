@@ -12,6 +12,7 @@ class ItemPageViewModel(application: Application): AndroidViewModel(application)
 
     val getPlace: LiveData<List<Place>>
     val getItem: LiveData<List<Item>>
+    val getItemLimit: LiveData<List<Item>>
     val repository : IvyRepository
 
     init {
@@ -19,6 +20,7 @@ class ItemPageViewModel(application: Application): AndroidViewModel(application)
         repository = IvyRepository(dao)
         getItem = repository.allItemData
         getPlace = repository.allPlaceData
+        getItemLimit = repository.limitItem
     }
 
    fun insertItem(item: Item) = viewModelScope.launch(Dispatchers.IO){

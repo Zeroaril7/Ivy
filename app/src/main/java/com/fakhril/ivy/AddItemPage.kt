@@ -26,11 +26,14 @@ class AddItemPage : AppCompatActivity(), View.OnClickListener{
     lateinit var totalItem: TextView
     lateinit var btnClose: ImageButton
     lateinit var edtItem: TextView
+    lateinit var btnToHome: ImageButton
+    lateinit var btnToPlace: ImageButton
     private var place = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item_page)
+        supportActionBar?.hide()
 
         addBtn = findViewById(R.id.add_button)
         removeBtn = findViewById(R.id.remove_button)
@@ -39,6 +42,8 @@ class AddItemPage : AppCompatActivity(), View.OnClickListener{
         btnClose = findViewById(R.id.close)
         placeSpinner = findViewById(R.id.action_bar_spinner)
         edtItem = findViewById(R.id.edt_goods_name)
+        btnToHome = findViewById(R.id.btn_home)
+        btnToPlace = findViewById(R.id.btn_place)
 
         viewModel = ViewModelProvider(
             this,
@@ -87,6 +92,16 @@ class AddItemPage : AppCompatActivity(), View.OnClickListener{
         }
         saveBtn.setOnClickListener(this)
         btnClose.setOnClickListener(this)
+        btnToHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
+        btnToPlace.setOnClickListener{
+            val intent = Intent(this, PlacePage::class.java)
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     override fun onClick(v: View?) {

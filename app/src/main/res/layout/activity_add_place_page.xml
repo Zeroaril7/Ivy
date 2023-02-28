@@ -4,7 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/frame_background"
+    >
 
     <RelativeLayout
         android:id="@+id/header_bar"
@@ -104,7 +106,7 @@
             android:id="@+id/profil_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/gudang"
+            android:src="@drawable/place"
             android:layout_marginLeft="20dp"
             android:layout_centerVertical="true"
 

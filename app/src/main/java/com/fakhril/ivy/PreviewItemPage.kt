@@ -3,6 +3,7 @@ package com.fakhril.ivy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.lifecycle.Observer
@@ -20,20 +21,26 @@ class PreviewItemPage : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewModel: ItemPageViewModel
     lateinit var addBtn: ImageButton
     lateinit var removeBtn: ImageButton
+    lateinit var btnToHome: ImageButton
+    lateinit var btnToPlace: ImageButton
     private var place = ""
     private var oldPlace = ""
+    private var oldTotalItem: Int = 0
     private var totalItem: Int = 0
 
     var itemID = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview_item_page)
+        supportActionBar?.hide()
 
         val oldItemName = intent.getStringExtra("itemName")
         val oldPlaceName = intent.getStringExtra("placeName")
         val oldTotal = intent.getStringExtra("total")
         itemID = intent.getIntExtra("itemId", -1)
 
+        btnToHome = findViewById(R.id.btn_home)
+        btnToPlace = findViewById(R.id.btn_place)
         addBtn = findViewById(R.id.add_button)
         removeBtn = findViewById(R.id.remove_button)
         item_title = findViewById(R.id.item_title)
@@ -53,7 +60,7 @@ class PreviewItemPage : AppCompatActivity(), View.OnClickListener {
         total.text = oldTotal
         oldPlace = oldPlaceName.toString()
 
-
+        oldTotalItem = oldTotal!!.toInt()
 
         var spiner = ArrayAdapter<Any>(this@PreviewItemPage,
             android.R.layout.simple_spinner_item)
@@ -97,9 +104,18 @@ class PreviewItemPage : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-
         btnSave.setOnClickListener(this)
         btnDelete.setOnClickListener(this)
+        btnToHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
+        btnToPlace.setOnClickListener{
+            val intent = Intent(this, PlacePage::class.java)
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     override fun onClick(v: View?) {
@@ -109,15 +125,15 @@ class PreviewItemPage : AppCompatActivity(), View.OnClickListener {
         val oldPlaceName = oldPlace
         val count = total.text.toString()
         totalItem = count.toInt()
-
         when(v?.id){
             R.id.btn_save -> {
                 if(newItemName.isNotEmpty()){
-                    if(newItemName == oldItemName && newPlaceName == oldPlaceName){
+                    if(newItemName == oldItemName && newPlaceName == oldPlaceName && oldTotalItem == totalItem ){
                         startActivity(Intent(applicationContext, ItemPage::class.java))
                         this.finish()
                     } else {
                         val updatedItem = Item(itemName = newItemName, total = totalItem, placeName = newPlaceName)
+
                         updatedItem.id = itemID
                         viewModel.updateItem(updatedItem)
                         Toast.makeText(this, "Success Update", Toast.LENGTH_LONG).show()

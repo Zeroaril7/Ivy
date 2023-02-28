@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,16 +23,21 @@ class ItemPage : AppCompatActivity(){
     private var allPlace= ArrayList<Place>()
     private lateinit var ivyRV: RecyclerView
     private lateinit var viewModel: ItemPageViewModel
+    lateinit var btnToHome: ImageButton
+    lateinit var btnToPlace: ImageButton
     lateinit var addFABItem: FloatingActionButton
     private val childItemAdapter = ChildItemAdapter(this, allItem)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_page)
-
+        supportActionBar?.hide()
 
         ivyRV = findViewById(R.id.parent_rv)
         addFABItem = findViewById(R.id.FAB_item)
+
+        btnToHome = findViewById(R.id.btn_home)
+        btnToPlace = findViewById(R.id.btn_place)
 
         ivyRV.setHasFixedSize(true)
         ivyRV.layoutManager = LinearLayoutManager(this)
@@ -62,6 +68,17 @@ class ItemPage : AppCompatActivity(){
         addFABItem.setOnClickListener {
             val intent = Intent(this@ItemPage, AddItemPage::class.java)
             startActivity(intent)
+        }
+
+        btnToHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
+        btnToPlace.setOnClickListener{
+            val intent = Intent(this, PlacePage::class.java)
+            startActivity(intent)
+            this.finish()
         }
     }
 }

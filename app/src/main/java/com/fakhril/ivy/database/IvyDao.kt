@@ -29,4 +29,10 @@ interface IvyDao {
 
     @Query("SELECT * FROM item ORDER BY id DESC")
     fun getItem(): LiveData<List<Item>>
+
+    @Query("SELECT * FROM place LIMIT 2")
+    fun getPlaceLimit() : LiveData<List<Place>>
+
+    @Query("SELECT * FROM item LIMIT 4")
+    fun getItemLimit() : LiveData<List<Item>>
 }

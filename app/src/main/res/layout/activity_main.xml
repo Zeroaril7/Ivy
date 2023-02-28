@@ -3,11 +3,202 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/frame_background"
+    >
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome To Ivy"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="20sp"
+            android:textColor="@color/text"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:contentDescription="App Logo"
+            android:id="@+id/logo_image"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:src="@drawable/ivy_logo"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/place_card"
+        android:layout_below="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
+        >
+    <FrameLayout
+        android:id="@+id/card_frame_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        >
+        <ImageView
+            android:id="@+id/card_item_top_place"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/card_item_top"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Places"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/text"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/btn_see_all_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_see_all"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            android:textColor="@color/click_text"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            />
+        </RelativeLayout>
+    </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ivyRV"
+        android:id="@+id/card_place"
+        android:layout_below="@+id/card_frame_place"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:listitem="@layout/rv_place_page"
+        />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/item_card"
+        android:layout_below="@+id/place_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin">
+        <FrameLayout
+            android:id="@+id/card_frame_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            >
+            <ImageView
+                android:id="@+id/card_item_top_item"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/card_item_top"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Items"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/text"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_see_all_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_see_all"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="12sp"
+                    android:textColor="@color/click_text"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/card_item"
+            android:layout_below="@+id/card_frame_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:listitem="@layout/rv_item_page"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/navbar"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_brown"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_category_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warehouse_white"
+            android:background="@color/navbar_background"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:clickable="true"
+            />
+
+    </RelativeLayout>
 </RelativeLayout>
