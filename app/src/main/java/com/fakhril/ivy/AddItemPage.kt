@@ -2,23 +2,18 @@ package com.fakhril.ivy
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.widget.*
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import androidx.core.view.isEmpty
-import androidx.core.view.isNotEmpty
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.fakhril.ivy.database.Item
-import com.fakhril.ivy.database.Place
 import com.fakhril.ivy.viewmodel.ItemPageViewModel
+import com.fakhril.ivy.viewmodel.PlacePageViewModel
 
 class AddItemPage : AppCompatActivity(), View.OnClickListener{
     lateinit var viewModel: ItemPageViewModel
+    lateinit var viewModelPlace : PlacePageViewModel
     lateinit var placeSpinner: Spinner
     lateinit var addBtn: ImageButton
     lateinit var removeBtn: ImageButton

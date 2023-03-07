@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.fakhril.ivy.R
 import com.fakhril.ivy.database.Item
-import com.fakhril.ivy.database.Place
 
 class ItemAdapter(val context: Context,  val allItem : ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 

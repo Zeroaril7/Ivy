@@ -33,5 +33,9 @@ class IvyRepository(private val ivyDao: IvyDao) {
         ivyDao.updateItem(item)
     }
 
+    suspend fun deleteSelectedItem(placeName : String) {
+        ivyDao.deleteSelectItem(placeName)
+    }
+
 
 }

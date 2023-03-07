@@ -35,4 +35,7 @@ interface IvyDao {
 
     @Query("SELECT * FROM item LIMIT 4")
     fun getItemLimit() : LiveData<List<Item>>
+
+    @Query("DELETE FROM item WHERE placeName = :placeName")
+    fun deleteSelectItem(placeName: String)
 }

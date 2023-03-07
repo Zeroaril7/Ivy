@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
+import com.fakhril.ivy.database.Item
 import com.fakhril.ivy.database.Place
+import com.fakhril.ivy.viewmodel.ItemPageViewModel
 import com.fakhril.ivy.viewmodel.PlacePageViewModel
 
 class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
@@ -14,6 +16,7 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
     private lateinit var place_name_title : TextView
     private lateinit var place_name : EditText
     private lateinit var viewModel: PlacePageViewModel
+    private lateinit var viewModelItem : ItemPageViewModel
     private lateinit var btnSave: Button
     private lateinit var btnDelete: Button
     lateinit var btnToItem: ImageButton
@@ -42,6 +45,11 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         ).get(PlacePageViewModel::class.java)
+
+        viewModelItem = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        ).get(ItemPageViewModel::class.java)
 
 
         btnSave.setOnClickListener(this)
@@ -84,6 +92,8 @@ class PreviewPlacePage : AppCompatActivity(), View.OnClickListener {
                 val deletePlace = Place(placeName = oldPlaceName)
                 deletePlace.idPlace = placeID
                 viewModel.deletePlace(deletePlace)
+                
+                viewModelItem.deleteSelectedItem(oldPlaceName)
 
                 Toast.makeText(this, "Success Delete", Toast.LENGTH_LONG).show()
                 startActivity(Intent(applicationContext, PlacePage::class.java))

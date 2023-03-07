@@ -35,6 +35,8 @@ class ItemPageViewModel(application: Application): AndroidViewModel(application)
         repository.updateItem(item)
     }
 
-
+    fun deleteSelectedItem(placeName: String) = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteSelectedItem(placeName)
+    }
 
 }
